@@ -3,9 +3,12 @@ info:
   title: Gardusi DevOps Data API
   version: 0.1.0
   description: Read-only contracts for the public devops data plane.
+  license:
+    name: MIT
 servers:
   - url: https://gardusi-gustavo.github.io
     description: Static GitHub Pages data plane
+security: []
 paths:
   /health:
     get:
