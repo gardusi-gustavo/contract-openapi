@@ -1,0 +1,14 @@
+[
+  {
+    "name": "contract-json",
+    "section": "contracts",
+    "github": true,
+    "gitea_archived": true
+  },
+  {
+    "name": "database-wiki",
+    "section": "databases",
+    "github": true,
+    "gitea_archived": false
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "rank": "1.1",
+  "title": "Expand the repository listing schema",
+  "context": "The initial spec covers the core inventory fields but not section and archive filters.",
+  "limits": {
+    "max_commits": 4,
+    "max_file_changes": 4
+  },
+  "spec": {
+    "summary": "Add filter parameters and examples for /repos.",
+    "expected_outcome": "The spec documents section and archived filtering.",
+    "acceptance_criteria": [
+      "Parameters are documented",
+      "Examples validate"
+    ]
+  },
+  "attempts": []
+}

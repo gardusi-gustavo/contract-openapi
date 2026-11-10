@@ -1,0 +1,18 @@
+{
+  "rank": "2.1",
+  "title": "Publish generated API documentation",
+  "context": "The contract is only readable as YAML today.",
+  "limits": {
+    "max_commits": 3,
+    "max_file_changes": 3
+  },
+  "spec": {
+    "summary": "Add a static Redoc build for GitHub Pages.",
+    "expected_outcome": "The contract is browsable from the dashboard ecosystem.",
+    "acceptance_criteria": [
+      "Build succeeds in CI",
+      "Published page loads the spec"
+    ]
+  },
+  "attempts": []
+}

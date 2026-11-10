@@ -1,0 +1,18 @@
+{
+  "rank": "1.2",
+  "title": "Model the progress response",
+  "context": "The progress artifact has metrics, repositories, archive, and metadata blocks.",
+  "limits": {
+    "max_commits": 4,
+    "max_file_changes": 4
+  },
+  "spec": {
+    "summary": "Expand the Progress schema to match the live artifact.",
+    "expected_outcome": "The schema covers all progress fields used by dashboard-devops.",
+    "acceptance_criteria": [
+      "Schema matches the generated artifact",
+      "Redocly lint passes"
+    ]
+  },
+  "attempts": []
+}

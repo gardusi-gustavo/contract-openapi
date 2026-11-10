@@ -1,0 +1,102 @@
+openapi: 3.1.0
+info:
+  title: Gardusi DevOps Data API
+  version: 0.1.0
+  description: Read-only contracts for the public devops data plane.
+servers:
+  - url: https://gardusi-gustavo.github.io
+    description: Static GitHub Pages data plane
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      summary: Report service health
+      responses:
+        "200":
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Health"
+  /repos:
+    get:
+      operationId: listRepositories
+      summary: List ecosystem repositories
+      parameters:
+        - name: section
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: archived
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Repository inventory
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Repository"
+  /progress:
+    get:
+      operationId: getProgress
+      summary: Read progress metrics
+      responses:
+        "200":
+          description: Progress artifact
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Progress"
+components:
+  schemas:
+    Health:
+      type: object
+      required: [status, version, generated_at]
+      properties:
+        status:
+          type: string
+          enum: [ok]
+        version:
+          type: string
+        generated_at:
+          type: string
+          format: date-time
+    Repository:
+      type: object
+      required: [name, section, github, gitea_archived]
+      properties:
+        name:
+          type: string
+        section:
+          type: string
+        github:
+          type: boolean
+        gitea_archived:
+          type: boolean
+    Progress:
+      type: object
+      required: [generated_at, metrics, repositories]
+      properties:
+        generated_at:
+          type: string
+          format: date-time
+        metrics:
+          type: array
+          items:
+            type: object
+            required: [label, value]
+            properties:
+              label:
+                type: string
+              value:
+                type: integer
+        repositories:
+          type: array
+          items:
+            $ref: "#/components/schemas/Repository"

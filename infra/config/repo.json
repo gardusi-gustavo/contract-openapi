@@ -1,0 +1,169 @@
+{
+  "schema": 1,
+  "name": "contract-openapi",
+  "organization": "gardusi-gustavo",
+  "layer": 1,
+  "kind": "contract",
+  "visibility": "public",
+  "platforms": [
+    "github"
+  ],
+  "features": {
+    "ci": true,
+    "pages": false,
+    "release": false,
+    "observability": false
+  },
+  "limits": {
+    "repo_mb": 50,
+    "file_mb": 10,
+    "max_symlinks": 0
+  },
+  "ci": {
+    "script": "infra/scripts/ci.sh",
+    "timeout_minutes": 15,
+    "required_jobs": [
+      "ci"
+    ],
+    "primary": "github",
+    "profile": "universal"
+  },
+  "pages": {
+    "enabled": false,
+    "output": "public",
+    "generator": "custom",
+    "publish": {
+      "gitea": false,
+      "github": false
+    }
+  },
+  "binaries": {
+    "allowed": [],
+    "allow_private_data": false
+  },
+  "versioning": {
+    "scheme": "semver",
+    "tag_prefix": "v",
+    "release_artifacts": false
+  },
+  "readme": {
+    "max_lines": 80
+  },
+  "data_classification": "public",
+  "depends_on": [],
+  "consumers": [
+    "gardusi-gustavo/database-devops",
+    "gardusi-gustavo/dashboard-devops"
+  ],
+  "files": {
+    "infra_max_file_mb": 1,
+    "rules": {
+      "": {
+        "allow_names": [
+          "README.md",
+          "AGENTS.md",
+          ".gitignore",
+          ".gitattributes",
+          ".dockerignore",
+          "VERSION",
+          "openapi.yaml",
+          "redocly.yaml"
+        ],
+        "allow_globs": []
+      },
+      "docs/": {
+        "allow_extensions": [
+          ".md"
+        ],
+        "allow_names": [
+          ".gitkeep"
+        ]
+      },
+      "docs/issues/": {
+        "allow_extensions": [
+          ".json",
+          ".md"
+        ]
+      },
+      "schemas/": {
+        "allow_extensions": [
+          ".json",
+          ".yaml",
+          ".yml"
+        ],
+        "allow_names": [
+          ".gitkeep"
+        ]
+      },
+      "examples/": {
+        "allow_extensions": [
+          ".json",
+          ".yaml",
+          ".yml"
+        ],
+        "allow_names": [
+          ".gitkeep"
+        ]
+      },
+      "infra/config/": {
+        "allow_extensions": [
+          ".json"
+        ]
+      },
+      "infra/scripts/": {
+        "allow_extensions": [
+          ".sh",
+          ".py"
+        ]
+      },
+      "infra/docker/": {
+        "allow_globs": [
+          "*.dockerfile"
+        ]
+      },
+      ".github/": {
+        "allow_globs": [
+          "*"
+        ]
+      },
+      ".github/workflows/": {
+        "allow_extensions": [
+          ".yml",
+          ".yaml"
+        ]
+      },
+      ".github/ISSUE_TEMPLATE/": {
+        "allow_extensions": [
+          ".yml",
+          ".yaml",
+          ".md"
+        ]
+      }
+    },
+    "forbid": [
+      {
+        "regex": "(^|/)[^/]*\\.md$",
+        "reason": "Markdown is allowed only in docs/, .github/, README.md, and AGENTS.md",
+        "allow": [
+          "^README\\.md$",
+          "^AGENTS\\.md$",
+          "^docs/",
+          "^\\.github/"
+        ]
+      },
+      {
+        "regex": "^infra/data/",
+        "reason": "infra/data is retired; use examples/"
+      },
+      {
+        "regex": "^infra/.*\\.(pdf|png|jpg|jpeg|gif|webp|mp4|mp3|zip|gz|tar|7z)$",
+        "reason": "infra is repository management only"
+      },
+      {
+        "regex": "^\\.gitlab-ci\\.yml$",
+        "reason": "GitLab is not a source"
+      }
+    ]
+  },
+  "dependencies": {}
+}

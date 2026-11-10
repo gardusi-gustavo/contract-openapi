@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Repository",
+  "type": "object",
+  "required": [
+    "name",
+    "section",
+    "github",
+    "gitea_archived"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "section": {
+      "type": "string"
+    },
+    "github": {
+      "type": "boolean"
+    },
+    "gitea_archived": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": true
+}
